@@ -14,7 +14,7 @@ plugins {
     id("io.spring.dependency-management") version "1.1.5"
 }
 
-group = "com.fastcampuspay.membership"
+group = "com.fastcampuspay"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -31,6 +31,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("com.h2database:h2:2.2.220")
+
+    implementation(project(path = ":common"))
 
 //    testImplementation(platform("org.junit:junit-bom:5.10.0"))
 //    testImplementation("org.junit.jupiter:junit-jupiter")

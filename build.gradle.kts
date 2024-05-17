@@ -5,8 +5,6 @@ buildscript {
     }
 }
 
-apply(plugin = "org.springframework.boot")
-
 plugins {
     id("java")
     id("java-library")
@@ -14,33 +12,41 @@ plugins {
     id("io.spring.dependency-management") version "1.1.5"
 }
 
-group = "com.fastcampuspay.membership"
+group = "com.fastcampuspay"
 version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
 }
 
-dependencies {
+subprojects {
+    apply(plugin = "java")
+    apply(plugin = "org.springframework.boot")
+    apply(plugin = "io.spring.dependency-management")
 
-    implementation("org.projectlombok:lombok")
-    annotationProcessor("org.projectlombok:lombok")
+    group = "com.fastcampuspay"
+    version = "1.0-SNAPSHOT"
 
-    implementation("org.springframework.boot:spring-boot-starter-validation")
-    implementation("org.springframework.boot:spring-boot-starter-actuator")
-    implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("com.h2database:h2:2.2.220")
+    repositories {
+        mavenCentral()
+    }
 
-//    testImplementation(platform("org.junit:junit-bom:5.10.0"))
-//    testImplementation("org.junit.jupiter:junit-jupiter")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    dependencies {
+        implementation("org.projectlombok:lombok")
+        annotationProcessor("org.projectlombok:lombok")
 
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
+        implementation("org.springframework.boot:spring-boot-starter-validation")
+        implementation("org.springframework.boot:spring-boot-starter-actuator")
+        implementation("org.springframework.boot:spring-boot-starter-web")
+        implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+        implementation("com.h2database:h2:2.2.220")
 
-}
+        testImplementation("org.springframework.boot:spring-boot-starter-test")
 
-tasks.test {
-    useJUnitPlatform()
+        implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
+    }
 
+    tasks.test {
+        useJUnitPlatform()
+    }
 }
