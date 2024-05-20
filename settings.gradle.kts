@@ -1,3 +1,3 @@
-rootProject.name = "fastcampus_pay"
-include("membership_service")
+rootProject.name = "fastcampus-pay"
+include("membership-service")
 include("common")

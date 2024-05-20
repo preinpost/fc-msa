@@ -39,7 +39,7 @@ subprojects {
         implementation("org.springframework.boot:spring-boot-starter-actuator")
         implementation("org.springframework.boot:spring-boot-starter-web")
         implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-        implementation("com.h2database:h2:2.2.220")
+//        implementation("com.h2database:h2:2.2.220")
 
         testImplementation("org.springframework.boot:spring-boot-starter-test")
 
