@@ -1,17 +1,17 @@
 package com.fastcampuspay.banking.application.service;
 
+import com.fastcampuspay.banking.adapter.out.external.bank.ExternalFirmbankingRequest;
+import com.fastcampuspay.banking.adapter.out.external.bank.FirmbankingResult;
 import com.fastcampuspay.banking.adapter.out.persistence.FirmbankingRequestJpaEntity;
 import com.fastcampuspay.banking.adapter.out.persistence.FirmbankingRequestMapper;
-import com.fastcampuspay.banking.adapter.out.persistence.external.bank.ExternalFirmbankingRequest;
-import com.fastcampuspay.banking.adapter.out.persistence.external.bank.FirmbankingResult;
 import com.fastcampuspay.banking.application.port.in.RequestFirmbankingCommand;
 import com.fastcampuspay.banking.application.port.in.RequestFirmbankingUseCase;
 import com.fastcampuspay.banking.application.port.out.RequestExternalFirmbankingPort;
 import com.fastcampuspay.banking.application.port.out.RequestFirmbankingPort;
 import com.fastcampuspay.banking.domain.FirmbankingRequest;
+import com.fastcampuspay.common.UseCase;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.fastcampuspay.common.UseCase;
 
 import java.util.UUID;
 

@@ -1,10 +1,10 @@
-package com.fastcampuspay.banking.adapter.out.persistence.external.bank;
+package com.fastcampuspay.banking.adapter.out.external.bank;
 
 import com.fastcampuspay.banking.adapter.out.persistence.SpringDataRegisteredBankAccountRepository;
 import com.fastcampuspay.banking.application.port.out.RequestBankAccountInfoPort;
 import com.fastcampuspay.banking.application.port.out.RequestExternalFirmbankingPort;
 import lombok.RequiredArgsConstructor;
-import org.fastcampuspay.common.ExternalSystemAdapter;
+import com.fastcampuspay.common.ExternalSystemAdapter;
 
 @ExternalSystemAdapter
 @RequiredArgsConstructor

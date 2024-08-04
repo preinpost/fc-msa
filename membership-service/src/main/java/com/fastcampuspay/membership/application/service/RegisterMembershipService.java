@@ -8,7 +8,7 @@ import com.fastcampuspay.membership.application.port.out.RegisterMembershipPort;
 import com.fastcampuspay.membership.domain.Membership;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.fastcampuspay.common.UseCase;
+import com.fastcampuspay.common.UseCase;
 
 @RequiredArgsConstructor
 @Transactional

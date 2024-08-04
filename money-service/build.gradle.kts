@@ -25,6 +25,7 @@ repositories {
 dependencies {
 
     implementation("org.projectlombok:lombok")
+    implementation(project(":banking-service"))
     annotationProcessor("org.projectlombok:lombok")
 
     implementation("org.springframework.boot:spring-boot-starter-validation")

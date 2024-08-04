@@ -1,4 +1,4 @@
-package com.fastcampuspay.banking.adapter.out.persistence.external.bank;
+package com.fastcampuspay.banking.adapter.out.external.bank;
 
 import lombok.Data;
 

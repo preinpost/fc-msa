@@ -12,7 +12,7 @@ services:
       - ZOO_TLS_QUORUM_CLIENT_AUTH=none
 
   kafka:
-    image: 'bitnami/kafka:3.4.0'
+    image: 'bitnami/kafka:latest'
     networks:
       - fastcampuspay_network
     ports:
@@ -79,6 +79,8 @@ services:
       - SPRING_DATASOURCE_PASSWORD=mysqlpw
       - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQLDialect
       - SPRING_JPA_HIBERNATE_DDL_AUTO=create-drop
+      - KAFKA_CLUSTERS_BOOTSTRAPSERVERS=kafka:29092
+      - LOGGING_TOPIC=fastcampuspay.logging.out.stdout
 
   banking-service:
     image: fastcampus-pay-banking-service:1.0.0
@@ -98,6 +100,9 @@ services:
       - SPRING_DATASOURCE_PASSWORD=mysqlpw
       - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQLDialect
       - SPRING_JPA_HIBERNATE_DDL_AUTO=create-drop
+      - KAFKA_CLUSTERS_BOOTSTRAPSERVERS=kafka:29092
+      - LOGGING_TOPIC=fastcampuspay.logging.out.stdout
+      - SERVICE_MEMBERSHIP_URL=http://membership-service:8080
 
   money-service:
     image: fastcampus-pay-money-service:1.0.0
@@ -117,7 +122,38 @@ services:
       - SPRING_DATASOURCE_PASSWORD=mysqlpw
       - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQLDialect
       - SPRING_JPA_HIBERNATE_DDL_AUTO=create-drop
+      - KAFKA_CLUSTERS_BOOTSTRAPSERVERS=kafka:29092
+      - LOGGING_TOPIC=fastcampuspay.logging.out.stdout
+      - TASK_TOPIC=fastcampus.task.topic
+      - TASK_RESULT_TOPIC=fastcampus.task.result.topic
+      - SERVICE_MEMBERSHIP_URL=http://membership-service:8080
 
+  logging-consumer:
+    image: fastcampus-pay-logging-consumer:1.0.0
+    networks:
+      - fastcampuspay_network
+    restart: always
+    depends_on:
+      - kafka
+      - zookeeper
+    environment:
+      - KAFKA_CLUSTERS_BOOTSTRAPSERVERS=kafka:29092
+      - LOGGING_TOPIC=fastcampuspay.logging.out.stdout
+      - TASK_RESULT_TOPIC=fastcampus.task.result.topic
+
+  task-consumer:
+    image: fastcampus-pay-task-consumer:1.0.0
+    networks:
+      - fastcampuspay_network
+    restart: always
+    depends_on:
+      - kafka
+      - zookeeper
+    environment:
+      - KAFKA_CLUSTERS_BOOTSTRAPSERVERS=kafka:29092
+      - LOGGING_TOPIC=fastcampuspay.logging.out.stdout
+      - TASK_TOPIC=fastcampus.task.topic
+      - TASK_RESULT_TOPIC=fastcampus.task.result.topic
 
 networks:
   fastcampuspay_network:

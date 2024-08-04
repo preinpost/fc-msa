@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.fastcampuspay.common.SelfValidating;
+import com.fastcampuspay.common.SelfValidating;
 
 @Builder
 @Data

@@ -1,4 +1,4 @@
-package org.fastcampuspay.common;
+package com.fastcampuspay.common;
 
 
 import jakarta.validation.*;
